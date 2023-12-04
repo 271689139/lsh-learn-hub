@@ -2,7 +2,10 @@ package com.liushihao.learnhub.annotaion;
 
 import com.liushihao.learnhub.utils.FrequencyControlConstant;
 
-import java.lang.annotation.*;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -10,7 +13,6 @@ import java.util.concurrent.TimeUnit;
  *
  * @author admin
  */
-@Repeatable(FrequencyControlContainer.class) // 可重复
 @Retention(RetentionPolicy.RUNTIME)// 运行时生效
 @Target(ElementType.METHOD)//作用在方法上
 public @interface FrequencyControl {
@@ -29,35 +31,12 @@ public @interface FrequencyControl {
      */
     int period() default 1;
 
-
-    /**
-     * key的前缀，默认取方法全限定名，除非我们在不同方法上对同一个资源做频控，就自己指定
-     *
-     * @return key的前缀
-     */
-    String prefixKey() default "";
-
-    /**
-     * 频控对象，默认el表达指定具体的频控对象
-     * 对于ip 和uid模式，需要是http入口的对象，保证RequestHolder里有值
-     *
-     * @return 对象
-     */
-    Target target() default Target.EL;
-
-    /**
-     * springEl 表达式，target=EL必填
-     *
-     * @return 表达式
-     */
-    String spEl() default "";
-
     /**
      * 频控时间范围，默认单位秒
      *
      * @return 时间范围
      */
-    int time() default 10;
+    int time();
 
     /**
      * 频控时间单位，默认秒
@@ -71,13 +50,25 @@ public @interface FrequencyControl {
      *
      * @return 次数
      */
-    int count() default 1;
+    int count();
 
-    long capacity() default 3; // 令牌桶容量
 
-    double refillRate() default 0.5; // 每秒补充的令牌数
+    /**
+     * key的前缀，默认取方法全限定名，除非我们在不同方法上对同一个资源做频控，就自己指定
+     *
+     * @return key的前缀
+     */
+    String key() default "";
 
-    enum Target {
-        UID, IP, EL
-    }
+    /**
+     * @return 令牌桶容量
+     */
+    long capacity() default 3;
+
+    /**
+     * @return 每秒补充的令牌数
+     */
+    double refillRate() default 0.5;
+
+
 }

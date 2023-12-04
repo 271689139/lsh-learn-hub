@@ -2,9 +2,11 @@ package com.liushihao.learnhub;
 
 import com.liushihao.learnhub.dto.FixedWindowDTO;
 import com.liushihao.learnhub.frequancycontrol.FrequencyControlUtil;
+import com.liushihao.learnhub.service.FrequencyServiceImpl;
 import com.liushihao.learnhub.utils.FrequencyControlConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.concurrent.TimeUnit;
@@ -12,6 +14,27 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class FrequencyControlTest {
+
+
+    FrequencyServiceImpl frequencyService;
+
+    @Autowired
+    public void setFrequencyService(FrequencyServiceImpl frequencyService) {
+        this.frequencyService = frequencyService;
+    }
+
+
+    @Test
+    public void frequencySlidingWindow() {
+        for (int i = 0; i < 20; i++) {
+            try {
+                frequencyService.frequencySlidingWindow();
+            } catch (Exception e) {
+                log.error(e.getMessage(), e);
+            }
+        }
+
+    }
 
     @Test
     public void fixedWindowTest() {
