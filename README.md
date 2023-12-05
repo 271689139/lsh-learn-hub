@@ -17,5 +17,5 @@
 ## ----------------------------------------
 
 ### 使用ChatGpt测试类
-##### com.liushihao.learnhub.OpenAiTest
+##### com.liushihao.application.OpenAiTest
 

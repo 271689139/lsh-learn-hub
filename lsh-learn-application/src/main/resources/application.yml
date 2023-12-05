@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: lsh-learn-hub
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    timeout: 10000
+openapi:
+  key: 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
+  url: https://api.openai.com/v1/chat/completions
+  model: gpt-3.5-turbo-instruct-0914
