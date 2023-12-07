@@ -10,3 +10,8 @@ openapi:
   key: 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
   url: https://api.openai.com/v1/chat/completions
   model: gpt-3.5-turbo-instruct-0914
+
+log:
+  kafka:
+    server: 43.136.65.155:9092
+    enable: true
