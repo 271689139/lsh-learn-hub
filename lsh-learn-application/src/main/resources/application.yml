@@ -1,3 +1,5 @@
+server:
+  port: 8043
 spring:
   application:
     name: lsh-learn-hub

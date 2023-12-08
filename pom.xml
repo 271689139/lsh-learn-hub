@@ -24,6 +24,7 @@
         <module>lsh-learn-frequency</module>
         <module>lsh-learn-application</module>
         <module>lsh-learn-log</module>
+        <module>lsh-learn-kafka</module>
     </modules>
     <dependencies>
 

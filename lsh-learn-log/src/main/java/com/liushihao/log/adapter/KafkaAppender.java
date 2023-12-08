@@ -5,7 +5,7 @@ import ch.qos.logback.core.UnsynchronizedAppenderBase;
 
 /**
  * @author admin
- * 收集日志
+ * 收集日志 发送给kafka
  */
 public class KafkaAppender extends UnsynchronizedAppenderBase<ILoggingEvent> {
     @Override

@@ -1,0 +1,11 @@
+server:
+  port: 8044
+spring:
+  application:
+    name: lsh-learn-kafka
+
+kafka:
+  log:
+    bootstrapServer: 43.136.65.155:9092
+    topic: service-log-topic
+    groupId: kafka-service-log-consumer
